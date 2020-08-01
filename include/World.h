@@ -20,6 +20,7 @@ class World{
      const int m_blockSize = 10;
      sf::CircleShape m_appleShape;
      sf::RectangleShape m_bounds[4];
+     sf::RectangleShape m_statsBounds[4];
 };
 
 #endif // WORLD_H

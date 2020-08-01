@@ -4,6 +4,7 @@
 #include<window.h>
 #include<Snake.h>
 #include<World.h>
+#include<statsPanel.h>
 
 class Game{
   public:
@@ -21,6 +22,7 @@ class Game{
       sf::Clock m_clock;
       sf::Time m_elapsed;
       Snake m_snake;
+      StatsPanel m_statsPanel;
       World m_world;
 
 };
