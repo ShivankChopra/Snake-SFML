@@ -1,7 +1,9 @@
 #include "World.h"
 #include<iostream>
 
-World::World(sf::Vector2u l_windSize){
+World::World(sf::Vector2u l_windSize) 
+                                       
+{
     //m_blockSize = 16;
     m_windowSize = l_windSize;
     respawnApple();
@@ -44,8 +46,9 @@ void World::respawnApple(){
 }
 
 
-void World::update(Snake& l_player){
-    if(l_player.getPosition() == m_item){
+void World::update(Snake& l_player) {
+
+    if (l_player.getPosition() == m_item) {
         l_player.extend();
         l_player.increaseScore();
         respawnApple();
@@ -53,24 +56,32 @@ void World::update(Snake& l_player){
 
     int gridSize_x = m_windowSize.x / m_blockSize;
     int gridSize_y = m_windowSize.y / m_blockSize;
-    if(l_player.getPosition().x <= 0 ||
-       l_player.getPosition().y <= 4 ||
-       l_player.getPosition().x >= (gridSize_x - 1) ||
-       l_player.getPosition().y >= (gridSize_y - 1)
-       ){
+    if (l_player.getPosition().x <= 0 ||
+        l_player.getPosition().y <= 4 ||
+        l_player.getPosition().x >= (gridSize_x - 1) ||
+        l_player.getPosition().y >= (gridSize_y - 1)
+        ) {
 
-         l_player.lose();
-     }
+        l_player.lose();
+    }
 }
 
 
-void World::render(sf::RenderWindow& l_window){
-     for(int i = 0; i < 4; ++i){
-         l_window.draw(m_statsBounds[i]);
-          l_window.draw(m_bounds[i]);
-     }
-     l_window.draw(m_appleShape);
+
+void World::render(sf::RenderWindow& l_window) {
+
+
+    for (int i = 0; i < 4; ++i) {
+        l_window.draw(m_statsBounds[i]);
+        l_window.draw(m_bounds[i]);
+    }
+    l_window.draw(m_appleShape);
 }
+
+//sf::Time World::getElapsedTime() { return m_elapsed; }*/
+
+//void World::RestartClock() { m_elapsed += m_clock.restart(); }
+
 
 
 int World::getBlockSize(){ return 10;}

@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\My Projects\Snake-SFML\include;E:\My Projects\__Dependencies\SFML-2.5.1\SFML-2.5.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\My Projects\__Dependencies\SFML-2.5.1\SFML-2.5.1\include;E:\My Projects\Snake-SFML\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -119,7 +119,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>E:\My Projects\Snake-SFML\include;E:\My Projects\__Dependencies\SFML-2.5.1\SFML-2.5.1\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\My Projects\__Dependencies\SFML-2.5.1\SFML-2.5.1\include;E:\My Projects\Snake-SFML\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -148,7 +148,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\BaseState.h" />
     <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\MainGame.h" />
+    <ClInclude Include="include\MainMenu.h" />
     <ClInclude Include="include\Snake.h" />
     <ClInclude Include="include\statsPanel.h" />
     <ClInclude Include="include\window.h" />
@@ -157,6 +160,8 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\MainGame.cpp" />
+    <ClCompile Include="src\MainMenu.cpp" />
     <ClCompile Include="src\Snake.cpp" />
     <ClCompile Include="src\StatsPanel.cpp" />
     <ClCompile Include="src\window.cpp" />

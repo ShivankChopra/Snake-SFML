@@ -1,23 +1,23 @@
 #include "Game.h"
-#include<iostream>
 
 
-Game::Game() : m_window("Snake", sf::Vector2u(800, 600)),
-               m_world(sf::Vector2u(800,600)),
+Game::Game() : m_world(sf::Vector2u (800, 600)),
                m_snake(m_world.getBlockSize())
-{ }
+{
+    
+};
 
-Game::~Game(){}
+Game::~Game() {};
 
-void Game::handleInput(){
-    sf::Event event;
-    while(m_window.getRenderWindow()->pollEvent(event)){
+void Game::HandleInput(Window& renderWindow, bool &loadNextState, bool &loadPreviousState) {
+   sf::Event event;
+    while(renderWindow.getRenderWindow()->pollEvent(event)){
         if(event.type == sf::Event::Closed){
-            m_window.done();
+            loadPreviousState = true;
         }
         else if(event.type == sf::Event::KeyPressed){
             if(event.key.code == sf::Keyboard::F){
-                m_window.toggleFullscreen();
+               renderWindow.toggleFullscreen();
             }
             else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && m_snake.getDirection() != Direction::Down){
                m_snake.setDirection(Direction::Up);
@@ -33,40 +33,38 @@ void Game::handleInput(){
             }
         }
     }
+    
 }
 
 
-void Game::update(){
+void Game::Update(){
     float timestep = 1.0f / m_snake.getSpeed();
     if(m_elapsed.asSeconds() >= timestep){
-        m_snake.tick();
-        m_world.update(m_snake);
-        m_elapsed = sf::seconds(m_elapsed.asSeconds() - timestep);
-        if(m_snake.hasLost()){
+       m_snake.tick();
+       m_world.update(m_snake);
+       m_elapsed = sf::seconds(m_elapsed.asSeconds() - timestep);
+       if(m_snake.hasLost()){
                m_snake.reset();
         }
     }
     m_statsPanel.setScore(m_snake.getScore());
     m_statsPanel.setLives(m_snake.getLives());
+
+    m_world.update(m_snake);
 }
 
 
-void Game::render(){
-     m_window.beginDraw();
-     // Render here.
-     m_world.render(*m_window.getRenderWindow());
-     m_snake.render(*m_window.getRenderWindow());
-     m_statsPanel.render(*m_window.getRenderWindow());
-     m_window.endDraw();
-}
-
-
-Window* Game::getWindow(){
-    return &m_window;
+void Game::Render(Window& renderWindow){
+    renderWindow.beginDraw();
+    // Render here.     
+    m_snake.render(*renderWindow.getRenderWindow());
+    m_world.render(*renderWindow.getRenderWindow());
+    m_statsPanel.render(*renderWindow.getRenderWindow());
+    renderWindow.endDraw();
 }
 
 
 sf::Time Game::getElapsedTime(){ return m_elapsed; }
 
 
-void Game::restartClock(){ m_elapsed += m_clock.restart(); }
+void Game::RestartClock() { m_elapsed += m_clock.restart(); }
