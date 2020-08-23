@@ -9,7 +9,9 @@
 #include<BaseState.h>
 
 
-enum class State{ Intro, Gameplay };
+enum class State{ Intro , Gameplay };
+
+
 
 class MainGame : public BaseState
 {
@@ -20,6 +22,7 @@ class MainGame : public BaseState
 		void Run();
 
 	private:
+		
 		MainMenu m_mainMenu ;
 		Game m_game;
 		State m_state;

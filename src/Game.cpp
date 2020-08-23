@@ -1,39 +1,76 @@
 #include "Game.h"
-
+#include<iostream>
 
 Game::Game() : m_world(sf::Vector2u (800, 600)),
                m_snake(m_world.getBlockSize())
+               
 {
     
 };
 
 Game::~Game() {};
 
-void Game::HandleInput(Window& renderWindow, bool &loadNextState, bool &loadPreviousState) {
-   sf::Event event;
-    while(renderWindow.getRenderWindow()->pollEvent(event)){
-        if(event.type == sf::Event::Closed){
-            loadPreviousState = true;
+void Game::HandleInput(Window& renderWindow, bool& loadNextState, bool& loadPreviousState) {
+    sf::Event event;
+    while (renderWindow.getRenderWindow()->pollEvent(event)) {
+        if (event.type == sf::Event::Closed) {
+            renderWindow.done();
         }
-        else if(event.type == sf::Event::KeyPressed){
-            if(event.key.code == sf::Keyboard::F){
-               renderWindow.toggleFullscreen();
+        else if (event.type == sf::Event::KeyPressed)
+        {
+            
+            switch (event.key.code)
+            {
+            case sf::Keyboard::F:
+            {
+                renderWindow.toggleFullscreen();
+                break;
             }
-            else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && m_snake.getDirection() != Direction::Down){
-               m_snake.setDirection(Direction::Up);
+            case sf::Keyboard::Up:
+            {
+                if (m_snake.getDirection() != Direction::Down)
+                {
+                    m_snake.setDirection(Direction::Up);
+                    break;
+                }
             }
-            else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && m_snake.getDirection() != Direction::Up){
-               m_snake.setDirection(Direction::Down);
+            case sf::Keyboard::Down:
+            {
+                if (m_snake.getDirection() != Direction::Up)
+                {
+                    m_snake.setDirection(Direction::Down);
+                    break;
+                }
             }
-            else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && m_snake.getDirection() != Direction::Right){
-               m_snake.setDirection(Direction::Left);
+            case sf::Keyboard::Left:
+            {
+                if (m_snake.getDirection() != Direction::Right)
+                {
+                    m_snake.setDirection(Direction::Left);
+                    break;
+                }
             }
-            else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && m_snake.getDirection() != Direction::Left){
-               m_snake.setDirection(Direction::Right);
+            case sf::Keyboard::Right:
+            {
+                if (m_snake.getDirection() != Direction::Left)
+                {
+                    m_snake.setDirection(Direction::Right);
+                    break;
+                }
             }
+            case sf::Keyboard::Escape:
+            {
+                std::cout << "Enter key pressed, setting loadPrevState to true" << std:: endl;
+                loadPreviousState = true;
+                break;
+            }
+            default:
+                break;
+            }
+
         }
     }
-    
+   
 }
 
 
@@ -56,6 +93,7 @@ void Game::Update(){
 
 void Game::Render(Window& renderWindow){
     renderWindow.beginDraw();
+    
     // Render here.     
     m_snake.render(*renderWindow.getRenderWindow());
     m_world.render(*renderWindow.getRenderWindow());

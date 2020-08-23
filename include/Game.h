@@ -23,9 +23,8 @@ class Game : public BaseState
       sf::Clock m_clock;
       sf::Time m_elapsed;
       Snake m_snake;
-      StatsPanel m_statsPanel;
       World m_world;
-
+      StatsPanel m_statsPanel;
 };
 
 #endif // GAME_H

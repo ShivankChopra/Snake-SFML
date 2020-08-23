@@ -4,6 +4,7 @@
 #include<SFML/Graphics.hpp>
 #include<sstream>
 
+
 class StatsPanel
 {
 public:
@@ -21,8 +22,8 @@ private:
 	int m_score;
 	int m_lives;
 	int m_levels;
-
 	sf::Font m_font;
 	sf::Text _getSfTextFromNum(const char* heading,  int num,  sf::Vector2f position);
+	
 };
 #endif

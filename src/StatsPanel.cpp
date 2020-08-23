@@ -5,6 +5,7 @@
 StatsPanel::StatsPanel() :m_score(0), m_lives(3), m_levels(1)
 {
     m_font.loadFromFile("Pacifico-Regular.ttf");
+
 }
 
 int StatsPanel::getScore() { return m_score; };
@@ -31,9 +32,11 @@ void StatsPanel::render(sf::RenderWindow& l_window)
     sf::Text scoreText = _getSfTextFromNum("Score : ", m_score, { 240, 10 });
     sf::Text livesText = _getSfTextFromNum("Lives : ", m_lives, { 130, 10 });
     sf::Text levelText = _getSfTextFromNum("Levels : ", m_levels, { 20, 10 });
+    
 
     l_window.draw(levelText);
     l_window.draw(livesText);
     l_window.draw(scoreText);
+
  
 }

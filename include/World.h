@@ -14,10 +14,7 @@ class World{
      void respawnApple();
      void update(Snake& l_player);
      void render(sf::RenderWindow& l_window);
-     Window* getWindow();
-     //void RestartClock();
-     //sf::Time getElapsedTime();
-     //void handleInput();
+   
 
   private:
 
@@ -27,12 +24,7 @@ class World{
      sf::CircleShape m_appleShape;
      sf::RectangleShape m_bounds[4];
      sf::RectangleShape m_statsBounds[4];
-    // Window m_window;
-    // sf::Clock m_clock;
-    // sf::Time m_elapsed;
-    // Snake m_snake;
-    // StatsPanel m_statsPanel;
-     
+    
 
 };
 

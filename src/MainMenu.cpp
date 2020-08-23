@@ -29,6 +29,7 @@ MainMenu::MainMenu()
     );
     m_playButton.setPosition(400, 275);
     m_playButton.setCharacterSize(20);
+    m_playButton.setFillColor(sf::Color::Yellow);
 
     // Exit Button
     m_exitButton.setFont(m_font);
@@ -54,6 +55,7 @@ void MainMenu::HandleInput(Window& renderWindow, bool &loadNextState, bool &load
         }
         else if (event.type == sf::Event::KeyPressed)
         {
+          
             switch (event.key.code)
             {
                 case sf::Keyboard::Up:
@@ -94,6 +96,11 @@ void MainMenu::HandleInput(Window& renderWindow, bool &loadNextState, bool &load
                         m_isExitButtonPressed = true;
                     }
 
+                    if (m_isPlayButtonPressed == true)
+                    {
+                        loadNextState = true;
+                    }
+
                     break;
                 }
                 default:
@@ -101,10 +108,7 @@ void MainMenu::HandleInput(Window& renderWindow, bool &loadNextState, bool &load
             }
         }
     }
-    if (m_isPlayButtonPressed == true)
-    {
-        loadNextState = true;
-    }
+   
 }
 
 void MainMenu::Update()
@@ -114,6 +118,7 @@ void MainMenu::Update()
 
 void MainMenu::Render(Window& renderWindow)
 {
+    
     renderWindow.beginDraw();
     renderWindow.draw(m_gameTitle);
     renderWindow.draw(m_playButton);
