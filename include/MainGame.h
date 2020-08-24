@@ -9,6 +9,7 @@
 #include<BaseState.h>
 
 
+
 enum class State{ Intro , Gameplay };
 
 
@@ -23,6 +24,7 @@ class MainGame : public BaseState
 
 	private:
 		
+		Snake m_snake;
 		MainMenu m_mainMenu ;
 		Game m_game;
 		State m_state;
@@ -32,6 +34,7 @@ class MainGame : public BaseState
 
 		// private helpers
 		BaseState* GetCurrentState();
+		void _Reset();
 		bool UpdateState();
 };
 

@@ -100,6 +100,10 @@ void MainMenu::HandleInput(Window& renderWindow, bool &loadNextState, bool &load
                     {
                         loadNextState = true;
                     }
+                    else if (m_isExitButtonPressed)
+                    {
+                        renderWindow.done();
+                    }
 
                     break;
                 }

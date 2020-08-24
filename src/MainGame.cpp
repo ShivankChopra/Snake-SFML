@@ -2,7 +2,8 @@
 #include<iostream>
 
 MainGame::MainGame() : m_state(State::Intro),
-                       m_window("Snake", sf::Vector2u(800, 600))
+                       m_window("Snake", sf::Vector2u(800, 600)),
+                       m_snake(10)
 {
 
 
@@ -48,6 +49,11 @@ void MainGame::Run()
     }
 }
 
+void MainGame::_Reset()
+{
+    m_snake.hasLost();
+    m_snake.reset();
+}
 
 bool MainGame::UpdateState()
 {
@@ -76,10 +82,7 @@ bool MainGame::UpdateState()
     m_loadNextState = false;
     m_loadPreviousState = false;
 
-    if (l_changeState) {
-        std::cout << "Changing state..... " << std::endl;
-        std::cout << "Current state is : " << (m_state == State::Gameplay ? "Gameplay" : "Intro") << std::endl;
-    }
+    _Reset();
 
     return l_changeState;
 }
