@@ -31,24 +31,25 @@ void Game::HandleInput(Window& renderWindow, bool& loadNextState, bool& loadPrev
                 if (m_snake.getDirection() != Direction::Down)
                 {
                     m_snake.setDirection(Direction::Up);
-                    break;
+                    
                 }
+                break;
             }
             case sf::Keyboard::Down:
             {
                 if (m_snake.getDirection() != Direction::Up)
                 {
                     m_snake.setDirection(Direction::Down);
-                    break;
                 }
+                break;
             }
             case sf::Keyboard::Left:
             {
                 if (m_snake.getDirection() != Direction::Right)
                 {
                     m_snake.setDirection(Direction::Left);
-                    break;
                 }
+                break;
             }
             case sf::Keyboard::Right:
             {
@@ -58,7 +59,7 @@ void Game::HandleInput(Window& renderWindow, bool& loadNextState, bool& loadPrev
                     break;
                 }
             }
-            case sf::Keyboard::Escape:
+            case sf::Keyboard::E:
             {
                 std::cout << "Enter key pressed, setting loadPrevState to true" << std:: endl;
                 loadPreviousState = true;
@@ -87,7 +88,7 @@ void Game::Update(){
     m_statsPanel.setScore(m_snake.getScore());
     m_statsPanel.setLives(m_snake.getLives());
 
-    m_world.update(m_snake);
+    
 }
 
 

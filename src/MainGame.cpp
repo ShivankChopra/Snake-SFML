@@ -82,7 +82,7 @@ bool MainGame::UpdateState()
     m_loadNextState = false;
     m_loadPreviousState = false;
 
-    _Reset();
+   
 
     return l_changeState;
 }

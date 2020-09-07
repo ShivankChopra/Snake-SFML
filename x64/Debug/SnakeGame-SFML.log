@@ -1,2 +1,53 @@
-﻿  MainGame.cpp
+﻿  World.cpp
+E:\My Projects\Snake-SFML\src\World.cpp(11,40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\My Projects\Snake-SFML\src\World.cpp(15,63): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\My Projects\Snake-SFML\src\World.cpp(15,59): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+E:\My Projects\Snake-SFML\src\World.cpp(18,74): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+E:\My Projects\Snake-SFML\src\World.cpp(18,47): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\My Projects\Snake-SFML\src\World.cpp(67,63): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\My Projects\Snake-SFML\src\World.cpp(67,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\My Projects\Snake-SFML\src\World.cpp(93,19): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\My Projects\Snake-SFML\src\World.cpp(94,20): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\My Projects\Snake-SFML\src\World.cpp(95,18): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+E:\My Projects\Snake-SFML\src\World.cpp(96,18): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
   SnakeGame-SFML.vcxproj -> E:\My Projects\Snake-SFML\x64\Debug\SnakeGame-SFML.exe

@@ -5,6 +5,7 @@
 #include<Snake.h>
 #include<window.h>
 #include<statsPanel.h>
+using BlockContainer = std::vector<sf::RectangleShape> ;
 
 class World{
   public:
@@ -20,11 +21,14 @@ class World{
 
      sf::Vector2u m_windowSize;
      sf::Vector2i m_item;// track apple coordinate
+     sf::Vector2f m_pos;
      const int m_blockSize = 10;
      sf::CircleShape m_appleShape;
      sf::RectangleShape m_bounds[4];
-     sf::RectangleShape m_statsBounds[4];
-    
+     sf::RectangleShape m_rocks[4];
+     BlockContainer m_blocks;
+  
+  
 
 };
 
