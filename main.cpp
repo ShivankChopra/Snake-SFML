@@ -1,14 +1,9 @@
-#include <Game.h>
+#include <MainGame.h>
 #include<iostream>
 
 int main(){
-  Game game;
-  while(!game.getWindow()->isDone()){
-     game.handleInput();
-     game.update();
-     game.render();
-     game.restartClock();
-  }
+	MainGame MainGame;
+	MainGame.Run();
 
   return 0;
 }

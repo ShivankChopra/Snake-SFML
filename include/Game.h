@@ -4,25 +4,27 @@
 #include<window.h>
 #include<Snake.h>
 #include<World.h>
-
-class Game{
+#include<statsPanel.h>
+#include<BaseState.h>
+   
+class Game : public BaseState
+{
   public:
       Game();
       ~Game();
-      void handleInput();
-      void update();
-      void render();
-      Window *getWindow();
-      void restartClock();
+      void HandleInput(Window& renderWindow, bool &loadNextState, bool &loadPreviousState) ;
+      void Update() ;
+      void Render(Window& renderWindow) ;
+      void RestartClock();
       sf::Time getElapsedTime();
+      
 
   private:
-      Window m_window;
       sf::Clock m_clock;
       sf::Time m_elapsed;
       Snake m_snake;
       World m_world;
-
+      StatsPanel m_statsPanel;
 };
 
 #endif // GAME_H

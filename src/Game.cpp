@@ -1,73 +1,109 @@
 #include "Game.h"
 #include<iostream>
 
-/////////////////////////////////////////////////////////////////////////////////////////////
-Game::Game() : m_window("Snake", sf::Vector2u(800, 600)),
-               m_world(sf::Vector2u(800,600)),
+Game::Game() : m_world(sf::Vector2u (800, 600)),
                m_snake(m_world.getBlockSize())
-{ }
+               
+{
+    
+};
 
-/////////////////////////////////////////////////////////////////////////////////////////////
-Game::~Game(){}
+Game::~Game() {};
 
-/////////////////////////////////////////////////////////////////////////////////////////////
-void Game::handleInput(){
+void Game::HandleInput(Window& renderWindow, bool& loadNextState, bool& loadPreviousState) {
     sf::Event event;
-    while(m_window.getRenderWindow()->pollEvent(event)){
-        if(event.type == sf::Event::Closed){
-            m_window.done();
+    while (renderWindow.getRenderWindow()->pollEvent(event)) {
+        if (event.type == sf::Event::Closed) {
+            renderWindow.done();
         }
-        else if(event.type == sf::Event::KeyPressed){
-            if(event.key.code == sf::Keyboard::F){
-                m_window.toggleFullscreen();
+        else if (event.type == sf::Event::KeyPressed)
+        {
+            
+            switch (event.key.code)
+            {
+            case sf::Keyboard::F:
+            {
+                renderWindow.toggleFullscreen();
+                break;
             }
-            else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && m_snake.getDirection() != Direction::Down){
-               m_snake.setDirection(Direction::Up);
+            case sf::Keyboard::Up:
+            {
+                if (m_snake.getDirection() != Direction::Down)
+                {
+                    m_snake.setDirection(Direction::Up);
+                    
+                }
+                break;
             }
-            else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && m_snake.getDirection() != Direction::Up){
-               m_snake.setDirection(Direction::Down);
+            case sf::Keyboard::Down:
+            {
+                if (m_snake.getDirection() != Direction::Up)
+                {
+                    m_snake.setDirection(Direction::Down);
+                }
+                break;
             }
-            else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && m_snake.getDirection() != Direction::Right){
-               m_snake.setDirection(Direction::Left);
+            case sf::Keyboard::Left:
+            {
+                if (m_snake.getDirection() != Direction::Right)
+                {
+                    m_snake.setDirection(Direction::Left);
+                }
+                break;
             }
-            else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && m_snake.getDirection() != Direction::Left){
-               m_snake.setDirection(Direction::Right);
+            case sf::Keyboard::Right:
+            {
+                if (m_snake.getDirection() != Direction::Left)
+                {
+                    m_snake.setDirection(Direction::Right);
+                    break;
+                }
             }
+            case sf::Keyboard::E:
+            {
+                std::cout << "Enter key pressed, setting loadPrevState to true" << std:: endl;
+                loadPreviousState = true;
+                break;
+            }
+            default:
+                break;
+            }
+
         }
     }
+   
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////
-void Game::update(){
+
+void Game::Update(){
     float timestep = 1.0f / m_snake.getSpeed();
     if(m_elapsed.asSeconds() >= timestep){
-        m_snake.tick();
-        m_world.update(m_snake);
-        std::cout<<"Score :  "<<m_snake.getScore()<<std::endl<<std::endl;
-        std::cout<<"Lives :  "<<m_snake.getLives()<<std::endl<<std::endl<<std::endl;
-        m_elapsed = sf::seconds(m_elapsed.asSeconds() - timestep);
-        if(m_snake.hasLost()){
+       m_snake.tick();
+       m_world.update(m_snake);
+       m_elapsed = sf::seconds(m_elapsed.asSeconds() - timestep);
+       if(m_snake.hasLost()){
                m_snake.reset();
         }
     }
+    m_statsPanel.setScore(m_snake.getScore());
+    m_statsPanel.setLives(m_snake.getLives());
+
+    
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////
-void Game::render(){
-     m_window.beginDraw();
-     // Render here.
-     m_world.render(*m_window.getRenderWindow());
-     m_snake.render(*m_window.getRenderWindow());
-     m_window.endDraw();
+
+void Game::Render(Window& renderWindow){
+    renderWindow.beginDraw();
+    
+    // Render here.     
+    m_snake.render(*renderWindow.getRenderWindow());
+    m_world.render(*renderWindow.getRenderWindow());
+    m_statsPanel.render(*renderWindow.getRenderWindow());
+    renderWindow.endDraw();
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////
-Window* Game::getWindow(){
-    return &m_window;
-}
 
-//////////////////////////////////////////////////////////////////////////////////////////////
 sf::Time Game::getElapsedTime(){ return m_elapsed; }
 
-//////////////////////////////////////////////////////////////////////////////////////////////
-void Game::restartClock(){ m_elapsed += m_clock.restart(); }
+
+void Game::RestartClock() { m_elapsed += m_clock.restart(); }

@@ -1,2 +1,4 @@
 D:\C++ Projects\SnakeGame-SFML\x64\Debug\SnakeGame-SFML.exe
 D:\C++ Projects\SnakeGame-SFML\x64\Debug\SnakeGame-SFML.pdb
+E:\My Projects\Snake-SFML\x64\Debug\SnakeGame-SFML.exe
+E:\My Projects\Snake-SFML\x64\Debug\SnakeGame-SFML.pdb
